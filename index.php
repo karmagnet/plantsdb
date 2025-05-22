@@ -105,20 +105,10 @@ if (count($requestUriArray) === 2) {
         }
 
         $columns = getColumns($db, $tableName);
-        //var_dump($columns);
 
-        /*$results = fetchAll($db, $tableName);
-        $firstRow = $results[0];
-        $columns = array_keys($firstRow);
-        $columns = array_filter($columns, function($col) {
-            return $col !== 'id';
-        });*/
         $str = '<form method="POST" action="">';
         // Boucle pour les colonnes
         foreach ($columns as $col) {
-            // if ($col === 'id') {
-            //     continue;
-            // }
             $columnName = $col['COLUMN_NAME'];
             $columnType = $col['DATA_TYPE'];
             $isNullable = $col['IS_NULLABLE'];
@@ -141,8 +131,6 @@ if (count($requestUriArray) === 2) {
 
             $str .= $inputStr;
             $str .= '<br>';
-
-            // $str .= '<input type="text" name="' . $col . '" placeholder="' . $col . '" /><br>';
         }
 
         $str .= '<input type="submit" value="Save" />';
@@ -241,20 +229,9 @@ if (count($requestUriArray) === 3) {
         }
 
         $columns = getColumns($db, $tableName);
-        //var_dump($columns);
-
-        /*$results = fetchAll($db, $tableName);
-        $firstRow = $results[0];
-        $columns = array_keys($firstRow);
-        $columns = array_filter($columns, function($col) {
-            return $col !== 'id';
-        });*/
         $str = '<form method="POST" action="">';
         // Boucle pour les colonnes
         foreach ($columns as $col) {
-            // if ($col === 'id') {
-            //     continue;
-            // }
             $columnName = $col['COLUMN_NAME'];
             $columnType = $col['DATA_TYPE'];
             $isNullable = $col['IS_NULLABLE'];
@@ -300,10 +277,3 @@ if (count($requestUriArray) === 3) {
         header('Location: ' . BASE_PATH . $model . '/' . $id);
     }
 }
-
-// '' => 0
-// videogames => 1 => afficher toutes les données de ce type de ressource
-// videogames/1 => 2 => afficher les données de la ressource avec l'id numérique
-// videogames/add => 2 => afficher le formulaire d'ajout
-// videogames/1/edit => 3 => afficher le formulaire d'édition
-// videogames/1/delete => 3 => supprimer la ressource

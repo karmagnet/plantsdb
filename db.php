@@ -15,7 +15,6 @@ function fetchAll($connection, $table) {
     foreach ($plants as &$plant) {
         $plant['pet_friendly'] = ($plant['pet_friendly'] == 1) ? 'Oui' : 'Non';
     }
-
     return $plants;
 }
 
@@ -32,13 +31,6 @@ function getColumns($connection, $table) {
     $query->execute();
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
-
-/*function getColumns($connection, $table) {
-    $sql = "SELECT * FROM information_schema.COLUMNS WHERE TABLE_NAME = ?";
-    $query = $connection->prepare($sql);
-    $query->execute([$table]);
-    return $query->fetchAll(PDO::FETCH_ASSOC);
-}*/
 
 function save($connection, $table, $data) {
     // INSERT INTO $table (columns...) VALUES (values...);
