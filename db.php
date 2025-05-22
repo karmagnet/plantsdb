@@ -10,7 +10,13 @@ try {
 function fetchAll($connection, $table) {
     $query = $connection->prepare("SELECT * FROM ".$table);
     $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+    $plants = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($plants as &$plant) {
+        $plant['pet_friendly'] = ($plant['pet_friendly'] == 1) ? 'Oui' : 'Non';
+    }
+
+    return $plants;
 }
 
 function fetchById($connection, $table, $id) {

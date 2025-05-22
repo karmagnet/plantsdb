@@ -81,7 +81,7 @@ if (count($requestUriArray) === 1) {
     }
 
         $str .= '<td>';
-        $str .= '<a href="'. BASE_PATH . $model .'/add">Add new</a>';
+        $str .= '<div style="text-align: center;"><a href="'. BASE_PATH . $model .'/add">Add new</a></div>';
         $str .= '</td>';  
 
     $str .= '</tbody>';
